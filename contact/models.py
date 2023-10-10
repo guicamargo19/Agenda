@@ -10,6 +10,10 @@ from django.utils import timezone
 # category (foreign key), owner (foreign key)
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+
+
 class Contact(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50, blank=True)
@@ -19,6 +23,8 @@ class Contact(models.Model):
     description = models.TextField(blank=True)
     show = models.BooleanField(default=True)
     picture = models.ImageField(blank=True, upload_to='pictures/%Y/%m/')
+    category = models.ForeignKey(Category, blank=True,
+                                 on_delete=models.SET_NULL, null=True)
 
     # Função que alterar o nome do objeto mostrado no formulário
     # inserido na base de dados

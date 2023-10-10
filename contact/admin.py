@@ -14,7 +14,6 @@ class ContactAdmin(admin.ModelAdmin):
     search_fields = 'id', 'first_name', 'last_name',
 
 # Remy Lacroix
-# Gold Starr
 # Marsha May
 # Leah Gotti
 # Gabbie Carter
