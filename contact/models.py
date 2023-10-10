@@ -1,17 +1,23 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 # id (primary key - automático)
 # first_name (string), last_name (string), phone (string)
 # email (email), created_date (date), description (text)
 # show (boolean), picture (imagem)
-
-# Depois
 # category (foreign key), owner (foreign key)
 
 
 class Category(models.Model):
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
+
     name = models.CharField(max_length=50)
+
+    def __str__(self) -> str:
+        return f'{self.name}'
 
 
 class Contact(models.Model):
@@ -25,6 +31,8 @@ class Contact(models.Model):
     picture = models.ImageField(blank=True, upload_to='pictures/%Y/%m/')
     category = models.ForeignKey(Category, blank=True,
                                  on_delete=models.SET_NULL, null=True)
+    owner = models.ForeignKey(User, blank=True,
+                              on_delete=models.SET_NULL, null=True)
 
     # Função que alterar o nome do objeto mostrado no formulário
     # inserido na base de dados

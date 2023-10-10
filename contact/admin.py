@@ -13,8 +13,8 @@ class ContactAdmin(admin.ModelAdmin):
     list_display_links = 'id', 'first_name',
     search_fields = 'id', 'first_name', 'last_name',
 
-# Remy Lacroix
-# Marsha May
-# Leah Gotti
-# Gabbie Carter
-# Hazel Moore
+
+@admin.register(models.Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = 'name',
+    ordering = '-id',
