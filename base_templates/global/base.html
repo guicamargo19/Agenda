@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
 </head>
 <body>
-    <h1>BASE.html</h1>
+    <main class="content">
+        {% block contents %}{% endblock contents %}
+    </main>
 </body>
 </html>
