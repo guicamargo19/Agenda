@@ -9,6 +9,8 @@ from django.contrib.auth.models import User
 # category (foreign key), owner (foreign key)
 
 
+# CADA MODEL CRIADO, OU ALTERADO PRECISAMOS FAZER AS MIGRAÇÕES
+
 class Category(models.Model):
     class Meta:
         verbose_name = 'Category'
