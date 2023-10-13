@@ -4,43 +4,21 @@ from contact.models import Contact
 
 
 class ContactForm(forms.ModelForm):
-    # PRIMEIRO JEITO - CRIA OU SOBRESCREVE UM WIDGET(CAMPO DO FORM)
-    first_name = forms.CharField(
-        widget=forms.TextInput(
+    picture = forms.ImageField(
+        widget=forms.FileInput(
             attrs={
-                'class': 'classe-a classe-b',
-                'placeholder': 'Primeiro nome',
+                'accept': 'image/*',
             }
-        ),
-        label='Primeiro nome',
-        help_text='Digite seu primeiro nome aqui',
+        )
     )
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # SEGUNDOS JEITO ATUALIZAR E ALTERA UM WIDGET JÁ EXISTENTE
-        """ self.fields['first_name'].widget.attrs.update(
-            {
-                'class': 'classe-a classe-b',
-                'placeholder': 'Primeiro nome',
-            }
-        ) """
 
     class Meta:
         model = Contact
         fields = (
             'first_name', 'last_name', 'phone',
             'email', 'description', 'category',
+            'picture',
         )
-        # TERCEIRO JEITO CRIA OU SOBRESCREVE UM WIDGET
-        """ widgets = {
-            'first_name': forms.TextInput(
-                attrs={
-                    'class': 'classe a',
-                    'placeholder': 'Escreva aqui',
-                }
-            )
-        } """
 
     def clean(self):
         cleaned_data = self.cleaned_data
