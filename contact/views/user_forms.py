@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from contact.forms import RegisterForm, RegisterUpdateForm
 from django.contrib import messages, auth
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 
 
 #  View para criar um usuário do sistema
@@ -53,12 +54,14 @@ def login_view(request):
 
 
 #  View para fazer logout do usuário
+@login_required(login_url='contact:login')
 def logout_view(request):
     auth.logout(request)
     return redirect('contact:login')
 
 
 # View para atualizar um usuário
+@login_required(login_url='contact:login')
 def user_update(request):
     form = RegisterUpdateForm(instance=request.user)
 
@@ -80,4 +83,4 @@ def user_update(request):
 
     form.save()
     messages.success(request, 'Usuário atualizado com sucesso!')
-    return redirect('contact:login')
+    return redirect('contact:user_update')
