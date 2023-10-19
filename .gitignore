@@ -6,8 +6,12 @@ __pycache__
 db.sqlite3
 media/
 static/
-utils/
 project/local_settings.py
+gunicorn-error-log
+__localcode
+gunicorn.txt
+nginx-http.txt
+nginx-https.txt
 
 # Backup files # 
 *.bak 
