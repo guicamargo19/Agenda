@@ -12,6 +12,7 @@ __localcode
 gunicorn.txt
 nginx-http.txt
 nginx-https.txt
+utils/
 
 # Backup files # 
 *.bak 
